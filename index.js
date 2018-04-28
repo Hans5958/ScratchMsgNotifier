@@ -477,8 +477,11 @@ function closeTabOnClear(ondone) {
 }
 
 function settings() {
-  if (document.getElementById("settSFX").value == "url") document.getElementById("inputurl").style = "display:block"
-  else document.getElementById("inputurl").style = "display:none"
+  if (document.getElementById("settSFX").value == "url") {
+	document.getElementById("inputurl").style = "display:block"
+  } else { 
+  document.getElementById("inputurl").style = "display:none" }
+{document.getElementById("inputurl").style = "display:none"}
   document.getElementById('settTimeClose').value = Number(localStorage.getItem('notifTimeClose'));
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById("settSFX").value = localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx");
