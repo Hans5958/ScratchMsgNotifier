@@ -480,7 +480,7 @@ function settings() {
 
   document.getElementById('settTimeClose').value = Number(localStorage.getItem('notifTimeClose'));
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
-  document.getElementById(localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx")).selected = true;
+  document.getElementById("settSFX").value = localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx");
   document.getElementById("settSFX").onchange = function() {
 		if (document.getElementByName("settSFX").value == url) {
 			document.getElementById("inputurl").disabled = false
