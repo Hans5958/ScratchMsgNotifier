@@ -514,8 +514,6 @@ function settings() {
     localStorage.setItem("sfx",document.getElementById("settSFX").value);
 	localStorage.setItem("sfxUrl",document.getElementById("inputurl").value);
     localStorage.setItem("tts",Number((document.getElementById("settTTS").checked)));
-    localStorage.setItem("support",Number((document.getElementById("settCFC").checked)));
-    localStorage.setItem("supportLevel",document.getElementById("slider").value)
     location.reload();
   }
 
