@@ -482,7 +482,7 @@ function settings() {
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById("settSFX").value = localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx");
   document.getElementById("settSFX").onchange = function() {
-		if (document.getElementByName("settSFX").value == url) {
+		if (document.getElementById("settSFX").value == url) {
 			document.getElementById("inputurl").disabled = false
 		} else {
 			newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
