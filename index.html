@@ -70,15 +70,15 @@
                                 <br><br>Close notifications after <input type="number" min="0" max="10" style="width:5vh;height:3vh;font-size:2vh;" id="settTimeClose"></input> seconds<span class="settingsNote">(0 = don't close)</span>
                                 <br><br><br>Sound notification: <span class="settingsNote">(Select one to play it)</span>
                                   <br><select id="settSFX" style="font-size:.9vw;height:3vh;width:15vh;">
-                                  <option id="Snapchat">Default</option>
-                                  <option id="Chord">Chord</option>
-                                  <option id="Ding">Ding</option>
-                                  <option id="Ding but it's Mario">Ding but it's Mario</option>
-                                  <option id="Marimba">Marimba</option>
-                                  <option id="Oh oh">Oh oh</option>
-                                  <option id="Popcorn">Popcorn</option>
+                                  <option value="Snapchat">Default</option>
+                                  <option value="Chord">Chord</option>
+                                  <option value="Ding">Ding</option>
+                                  <option value="Ding but it's Mario">Ding but it's Mario</option>
+                                  <option value="Marimba">Marimba</option>
+                                  <option value="Oh oh">Oh oh</option>
+                                  <option value="Popcorn">Popcorn</option>
 								  <option value="url">Insert an URL...</option>
-								  <input id="inputurl"></option>
+								  <input id="inputurl"></input>
                                 </select> <a id="play" onclick='if(typeof(newsfx)!=="undefined") newsfx.pause(); newsfx = new Audio("./sfx/" + document.getElementById("settSFX").children[document.getElementById("settSFX").selectedIndex].id + ".wav");newsfx.play();' style="cursor:pointer;text-decoration:underline;padding-left:.5vw;">Play</a>
                                 <br><br><input type="checkbox" id="settTTS" style="height:.9vw;width:2vh;"> Text to speech comment notifications<br><span class="settingsNote">A high tech robot will speak new profile comments for you. <a onclick="var examplemsg = new SpeechSynthesisUtterance('World_Languages commented: Hope you like my notifier,'+user);speechSynthesis.speak(examplemsg);" style="cursor:pointer;text-decoration:underline;">Example</a></span>
 								</span></span><br>
