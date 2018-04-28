@@ -484,13 +484,18 @@ function settings() {
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById(localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx")).selected = true;
   document.getElementById("settSFX").onchange = function() {
-    newsfx = new Audio("./sfx/" + document.getElementById("settSFX").children[document.getElementById("settSFX").selectedIndex].id + ".wav");
-    newsfx.play();
-    document.getElementById("play").innerText = "Loading and playing sound..."
-    document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
-    document.getElementById("play").style.textDecoration = "";
-    newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
-  }
+		if (document.getElementById("url").selected = true) {
+			$("#inputurl").addClass(".hidden")
+		} else {
+			newsfx = new Audio("./sfx/" + document.getElementById("settSFX").children[document.getElementById("settSFX").selectedIndex].id + ".wav");
+			newsfx.play();
+			document.getElementById("play").innerText = "Loading and playing sound..."
+			document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
+			document.getElementById("play").style.textDecoration = "";
+			newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
+			$("#inputurl").removeClass(".hidden")
+		}
+	}
   if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
   if(localStorage.getItem("support")!=="0") document.getElementById("settCFC").click();
   else document.getElementById("mineSlider").style.display = "none";
@@ -550,14 +555,6 @@ swal({
   title: "Change your sound notification, enable text to speech and more!",
   text: "Simply go to Settings below your username.",
   icon: "info",
-  button: "Got it!",
-  closeOnClickOutside: false,
-})
-.then(() => {
-  swal({
-  title: "A final note",
-  text: "By using the notifier, you are supporting us - your machine is doing a small amount of mathematical calculations every second while the notifier is open.\nIf you have a data limit, notice your computer goes slower or simply do not want to support us, feel free to disable these calculations in the settings.",
-  icon: "warning",
   button: "Got it!",
   closeOnClickOutside: false,
 })
