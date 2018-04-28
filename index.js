@@ -502,7 +502,6 @@ function settings() {
 		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
 	}
   }
-}
   if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
   document.getElementById("saveSettings").onclick = function() {
     gtag('event', 'settingssaved');
@@ -513,6 +512,7 @@ function settings() {
     localStorage.setItem("tts",Number((document.getElementById("settTTS").checked)));
     location.reload();
   }
+}
 
 function notifySndNotLoaded() {
     var notification = new Notification("We couldn't play the audio", {
