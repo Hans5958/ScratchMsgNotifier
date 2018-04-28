@@ -502,17 +502,24 @@ function settings() {
 function playAudio(){
 	if (document.getElementById("settSFX").value == "url") {
 		document.getElementById("inputurl").disabled = false
+		if (document.getElementById("inputurl").value != null) {
 		newsfx = new Audio(document.getElementById("inputurl").value);
+		newsfx.play();
+		document.getElementById("play").innerText = "Loading and playing sound..."
+		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
+		document.getElementById("play").style.textDecoration = "";
+		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
 		
 	} else {
 		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
 		document.getElementById("inputurl").disabled = true
+		newsfx.play();
+		document.getElementById("play").innerText = "Loading and playing sound..."
+		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
+		document.getElementById("play").style.textDecoration = "";
+		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
 	}
-	newsfx.play();
-	document.getElementById("play").innerText = "Loading and playing sound..."
-	document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
-	document.getElementById("play").style.textDecoration = "";
-	newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
+
 }
 
 
