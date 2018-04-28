@@ -83,5 +83,5 @@ body, html {
 	-webkit-box-decoration-break: clone;
 }
 .hidden {
-
+	display: hidden
 }
