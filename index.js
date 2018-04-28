@@ -477,38 +477,20 @@ function closeTabOnClear(ondone) {
 }
 
 function settings() {
-
   document.getElementById('settTimeClose').value = Number(localStorage.getItem('notifTimeClose'));
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById("settSFX").value = localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx");
-  document.getElementById("settSFX").onchange = function() {playAudio()}
-  if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
-  if(localStorage.getItem("support")!=="0") document.getElementById("settCFC").click();
-  else document.getElementById("mineSlider").style.display = "none";
-  document.getElementById("slider").value = localStorage.getItem("supportLevel")===null ? 2 : localStorage.getItem("supportLevel");
-  document.getElementById("saveSettings").onclick = function() {
-    gtag('event', 'settingssaved');
-    localStorage.setItem("notifTimeClose",document.getElementById("settTimeClose").value);
-    localStorage.setItem("notificationsEnabled",Number(!(document.getElementById("settSendNotifs").checked)));
-    localStorage.setItem("sfx",document.getElementById("settSFX").children[document.getElementById("settSFX").selectedIndex].id);
-    localStorage.setItem("tts",Number((document.getElementById("settTTS").checked)));
-    localStorage.setItem("support",Number((document.getElementById("settCFC").checked)));
-    localStorage.setItem("supportLevel",document.getElementById("slider").value)
-    location.reload();
-  }
-
-}
-
-function playAudio(){
-	if (document.getElementById("settSFX").value == "url") {
+  document.getElementById("inputurl").value = localStorage.getItem("sfxUrl");
+  document.getElementById("settSFX").onchange = function() {
+	  if (document.getElementById("settSFX").value == "url") {
 		document.getElementById("inputurl").disabled = false
 		if (document.getElementById("inputurl").value != "") {
-		newsfx = new Audio(document.getElementById("inputurl").value);
-		newsfx.play();
-		document.getElementById("play").innerText = "Loading and playing sound..."
-		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
-		document.getElementById("play").style.textDecoration = "";
-		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
+			newsfx = new Audio(document.getElementById("inputurl").value);
+			newsfx.play();
+			document.getElementById("play").innerText = "Loading and playing sound..."
+			document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
+			document.getElementById("play").style.textDecoration = "";
+			newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
 		}
 	} else {
 		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
@@ -519,9 +501,25 @@ function playAudio(){
 		document.getElementById("play").style.textDecoration = "";
 		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
 	}
+  }
+}
+  if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
+  if(localStorage.getItem("support")!=="0") document.getElementById("settCFC").click();
+  else document.getElementById("mineSlider").style.display = "none";
+  document.getElementById("slider").value = localStorage.getItem("supportLevel")===null ? 2 : localStorage.getItem("supportLevel");
+  document.getElementById("saveSettings").onclick = function() {
+    gtag('event', 'settingssaved');
+    localStorage.setItem("notifTimeClose",document.getElementById("settTimeClose").value);
+    localStorage.setItem("notificationsEnabled",Number(!(document.getElementById("settSendNotifs").checked)));
+    localStorage.setItem("sfx",document.getElementById("settSFX").value);
+	localStorage.setItem("sfxUrl",document.getElementById("inputurl").value);
+    localStorage.setItem("tts",Number((document.getElementById("settTTS").checked)));
+    localStorage.setItem("support",Number((document.getElementById("settCFC").checked)));
+    localStorage.setItem("supportLevel",document.getElementById("slider").value)
+    location.reload();
+  }
 
 }
-
 
 function notifySndNotLoaded() {
     var notification = new Notification("We couldn't play the audio", {
