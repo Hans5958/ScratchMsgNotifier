@@ -481,8 +481,7 @@ function settings() {
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById("settSFX").value = localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx");
   document.getElementById("inputurl").value = localStorage.getItem("sfxUrl");
-  document.getElementById("settSFX").onchange = audioSettings();
-  document.getElementById("play").onclick = audioSettings();
+  document.getElementById("settSFX").onchange = function(){audioSettings()};
   if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
   document.getElementById("saveSettings").onclick = function() {
     gtag('event', 'settingssaved');
