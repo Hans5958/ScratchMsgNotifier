@@ -509,7 +509,7 @@ function playAudio(){
 		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
 		document.getElementById("play").style.textDecoration = "";
 		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
-		
+		}
 	} else {
 		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
 		document.getElementById("inputurl").disabled = true
