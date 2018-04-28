@@ -497,7 +497,7 @@ function settings() {
 
 function audioSettings() {
 	  if (document.getElementById("settSFX").value == "url") {
-		document.getElementById("inputurl").disabled = false
+		document.getElementById("inputurl").style = "display:block"
 		if (document.getElementById("inputurl").value != "") {
 			newsfx = new Audio(document.getElementById("inputurl").value);
 			newsfx.play();
@@ -508,7 +508,7 @@ function audioSettings() {
 		}
 	} else {
 		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
-		document.getElementById("inputurl").disabled = true
+		document.getElementById("inputurl").style = "display:hidden"
 		newsfx.play();
 		document.getElementById("play").innerText = "Loading and playing sound..."
 		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
