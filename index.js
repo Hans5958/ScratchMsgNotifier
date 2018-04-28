@@ -1,7 +1,6 @@
 // :)
 
 function main() {
-
     if(localStorage.getItem("username")) {
         notifier();
         settings();
@@ -10,7 +9,6 @@ function main() {
         setup();
         gtag('event', 'newuser');
     }
-
 }
 
 function oneSignalTag(name, value) {
@@ -564,7 +562,6 @@ swal({
   text: "Just keep this tab pinned and open, and enjoy the notifications! :)",
   icon: "success",
   button: "Let's go!",
-});
 });
 });
 });
