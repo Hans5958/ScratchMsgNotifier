@@ -69,7 +69,7 @@
                                 <input type="checkbox" id="settSendNotifs" style="height:2vh;width:2vh;"> Don't send notifications until I uncheck this<br><span class="settingsNote">You can also permanently disable sound in the top right corner.</span>
                                 <br><br>Close notifications after <input type="number" min="0" max="10" style="width:5vh;height:3vh;font-size:2vh;" id="settTimeClose"></input> seconds<span class="settingsNote">(0 = don't close)</span>
                                 <br><br><br>Sound notification: <span class="settingsNote">(Select one to play it)</span>
-                                  <br><select id="settSFX" style="font-size:.9vw;height:3vh;width:15vh;">
+                                  <br><select id="settSFX" style="font-size:.9vw;height:3vh;width:15vh;" onchange="audioSettings();">
                                   <option value="Snapchat">Default</option>
                                   <option value="Chord">Chord</option>
                                   <option value="Ding">Ding</option>
