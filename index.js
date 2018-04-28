@@ -482,16 +482,16 @@ function settings() {
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById(localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx")).selected = true;
   document.getElementById("settSFX").onchange = function() {
-		if (document.getElementByName("settSFX")[0].value == url) {
-			$("#inputurl").disabled = true
+		if (document.getElementByName("settSFX").value == url) {
+			document.getElementById("inputurl").disabled = false
 		} else {
-			newsfx = new Audio("./sfx/" + document.getElementById("settSFX").children[document.getElementById("settSFX").selectedIndex].id + ".wav");
+			newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
 			newsfx.play();
 			document.getElementById("play").innerText = "Loading and playing sound..."
 			document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
 			document.getElementById("play").style.textDecoration = "";
 			newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
-			$("#inputurl").disabled = false
+			document.getElementById("inputurl").disabled = true
 		}
 	}
   if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
