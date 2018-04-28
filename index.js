@@ -481,28 +481,8 @@ function settings() {
   if(!notificationsEnabled()) document.getElementById("settSendNotifs").click();
   document.getElementById("settSFX").value = localStorage.getItem("sfx")===null ? "Snapchat" : localStorage.getItem("sfx");
   document.getElementById("inputurl").value = localStorage.getItem("sfxUrl");
-  document.getElementById("settSFX").onchange = function() {
-	  if (document.getElementById("settSFX").value == "url") {
-		document.getElementById("inputurl").disabled = false
-		if (document.getElementById("inputurl").value != "") {
-			newsfx = new Audio(document.getElementById("inputurl").value);
-			newsfx.play();
-			document.getElementById("play").innerText = "Loading and playing sound..."
-			document.getElementById("play").setAttribute("onclick", ""));
-			document.getElementById("play").style.textDecoration = "";
-			newsfx.onended = function() {  document.getElementById("play").onclick = document.getElementById("settSFX").onchange}
-		}
-	} else {
-		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
-		document.getElementById("inputurl").disabled = true
-		newsfx.play();
-		document.getElementById("play").innerText = "Loading and playing sound..."
-		document.getElementById("play").setAttribute("onclick", ""));
-		document.getElementById("play").style.textDecoration = "";
-		newsfx.onended = function() {document.getElementById("play").onclick = document.getElementById("settSFX").onchange}
-	}
-  }
-  document.getElementById("play").onclick = document.getElementById("settSFX").onchange
+  document.getElementById("settSFX").onchange = audioSettings();
+  document.getElementById("play").onclick = audioSettings();
   if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
   document.getElementById("saveSettings").onclick = function() {
     gtag('event', 'settingssaved');
@@ -515,6 +495,28 @@ function settings() {
   }
 }
 
+function audioSettings() {
+	  if (document.getElementById("settSFX").value == "url") {
+		document.getElementById("inputurl").disabled = false
+		if (document.getElementById("inputurl").value != "") {
+			newsfx = new Audio(document.getElementById("inputurl").value);
+			newsfx.play();
+			document.getElementById("play").innerText = "Loading and playing sound..."
+			document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
+			document.getElementById("play").style.textDecoration = "";
+			newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
+		}
+	} else {
+		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
+		document.getElementById("inputurl").disabled = true
+		newsfx.play();
+		document.getElementById("play").innerText = "Loading and playing sound..."
+		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
+		document.getElementById("play").style.textDecoration = "";
+		newsfx.onended = function() {document.getElementById("play").innerText = "Play"; document.getElementById("play").setAttribute("onclick", document.getElementById("play").getAttribute("onclick").substring(2)); document.getElementById("play").style.textDecoration = "underline";}
+	}
+  }
+  
 function notifySndNotLoaded() {
     var notification = new Notification("We couldn't play the audio", {
         icon: './images/logo.png',
