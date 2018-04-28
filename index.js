@@ -508,7 +508,7 @@ function audioSettings() {
 		}
 	} else {
 		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
-		document.getElementById("inputurl").style = "display:hidden"
+		document.getElementById("inputurl").style = "display:none"
 		newsfx.play();
 		document.getElementById("play").innerText = "Loading and playing sound..."
 		document.getElementById("play").setAttribute("onclick", "//" + document.getElementById("play").getAttribute("onclick"));
