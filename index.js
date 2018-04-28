@@ -502,7 +502,7 @@ function settings() {
 function playAudio(){
 	if (document.getElementById("settSFX").value == "url") {
 		document.getElementById("inputurl").disabled = false
-		newsfx = new Audio(docuemnt.getElementById("inputurl").value;
+		newsfx = new Audio(docuemnt.getElementById("inputurl").value);
 		
 	} else {
 		newsfx = new Audio("./sfx/" + document.getElementById("settSFX").value + ".wav");
