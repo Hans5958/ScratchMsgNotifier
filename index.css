@@ -82,8 +82,3 @@ body, html {
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
 }
-.privacy {
-	background-color: white;
-	font-family: Arial;
-	margin: 5%
-}
