@@ -519,8 +519,6 @@ function settings() {
     location.reload();
   }
 
-}
-
 function notifySndNotLoaded() {
     var notification = new Notification("We couldn't play the audio", {
         icon: './images/logo.png',
