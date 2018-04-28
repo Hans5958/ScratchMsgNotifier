@@ -504,9 +504,6 @@ function settings() {
   }
 }
   if(localStorage.getItem("tts")==="1") document.getElementById("settTTS").click();
-  if(localStorage.getItem("support")!=="0") document.getElementById("settCFC").click();
-  else document.getElementById("mineSlider").style.display = "none";
-  document.getElementById("slider").value = localStorage.getItem("supportLevel")===null ? 2 : localStorage.getItem("supportLevel");
   document.getElementById("saveSettings").onclick = function() {
     gtag('event', 'settingssaved');
     localStorage.setItem("notifTimeClose",document.getElementById("settTimeClose").value);
