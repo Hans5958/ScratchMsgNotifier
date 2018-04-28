@@ -79,7 +79,7 @@
                                   <option value="Popcorn">Popcorn</option>
 								  <option value="url">Insert an URL...</option>
 								  <form><input id="inputurl" disabled="true"></input></form>
-                                </select> <a id="play" onclick='playAudio();' style="cursor:pointer;text-decoration:underline;padding-left:.5vw;">Play</a>
+                                </select> <a id="play" onclick='document.getElementById("settSFX").onchange;' style="cursor:pointer;text-decoration:underline;padding-left:.5vw;">Play</a>
                                 <br><br><input type="checkbox" id="settTTS" style="height:.9vw;width:2vh;"> Text to speech comment notifications<br><span class="settingsNote">A high tech robot will speak new profile comments for you. <a onclick="var examplemsg = new SpeechSynthesisUtterance('World_Languages commented: Hope you like my notifier,'+user);speechSynthesis.speak(examplemsg);" style="cursor:pointer;text-decoration:underline;">Example</a></span>
 								</span></span><br>
 								<span id="saveSettings" style="font-size:2vh;">Save settings</span>
