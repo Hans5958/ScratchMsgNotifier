@@ -502,7 +502,7 @@ function settings() {
 function playAudio(){
 	if (document.getElementById("settSFX").value == "url") {
 		document.getElementById("inputurl").disabled = false
-		if (document.getElementById("inputurl").value != null) {
+		if (document.getElementById("inputurl").value != "") {
 		newsfx = new Audio(document.getElementById("inputurl").value);
 		newsfx.play();
 		document.getElementById("play").innerText = "Loading and playing sound..."
