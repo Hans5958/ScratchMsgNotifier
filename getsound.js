@@ -1,7 +1,7 @@
 if(localStorage.getItem("sfx")=== null) {
 	snd = new Audio("./sfx/Snapchat.wav");
 } else if (localStorage.getItem("sfx") === "url") {
-	snd = new Audio(sfxUrl);
+	snd = new Audio(localStorage.getItem("sfxUrl");
 } else {
 	snd = new Audio("./sfx/" + localStorage.getItem("sfx") + ".wav");
 }
