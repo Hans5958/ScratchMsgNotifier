@@ -13,7 +13,18 @@ function setup() {
             if (Notification.permission === "granted") {
                 enterUsername();
             } else {
-                setup();
+              swal('Permission Not Granted', "You either don't click Allow or you clicked Decline. We won't give you notifications. Press OK to continue.", {
+                      buttons: {
+                          catch: {
+                              text: "OK",
+                              value: "OK",
+                          },
+                      },
+                      closeOnClickOutside: false,
+                  })
+                  .then((value) => {
+                          enterUsername();
+              });
             }
         });
 }
